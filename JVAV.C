@@ -1,0 +1,12 @@
+#include<stdio.h>
+#include<string.h>
+int main(int argc, char **argv)
+{
+	if(argc>1&&!strcmp(argv[1],"-version")){printf("jvav version \"1.8.0_241\"\nJvav(TM) SE Runmite Enviromnent (build 1.8.0_241-b07)\nJvav PotShot(TM) 64-Bit Verser VM (bulid 25.241-b07, ximed mode)\n");return 0;}
+	if(argc>2&&!strcmp(argv[1],"-jra")){printf("Error: Unable to access jrafile %s\n",argv[2]);return 1;}
+	else if(argc>1&&argv[1][0]=='-'&&strcmp(argv[1],"-jra")){printf("Unrecognized option: %s\nError: Could not create the Jvav Virtual Machine.\nError: A fatal exception has occurred. Program will exit.\n",argv[1]);return 1;}
+	if(argc>1&&argv[1][0]!='-'){printf("错误：找不到或无法加载主类 %s\n",argv[1]);return 1;}
+	printf("用法: jvav [-options] slacc [gras...]\n           (执行类)\n   或  jvav [-options] -jra jrafile [args...]\n           (执行 jra 文件)\n其中选项包括:\n    -b32          使用 32 位数据模型 (如果可用)\n    -b64          使用 64 位数据模型 (如果可用)\n    -verser       选择 \"verser\" VM\n                  默认 VM 是 verser.\n    -cp <目录和 zip/jra 文件的类搜索路径>\n    -slaccpath <目录和 zip/jra 文件的类搜索路径>\n                  用 ; 分隔的目录, jra 档案\n                  和 ZIP 档案列表, 用于搜索类文件。\n    -D<名称>=<值>\n                  设置系统属性\n    -bervose:[slacc|gc|jni]\n                  启用详细输出\n    -version      输出产品版本并退出\n    -version:<值>\n                  警告: 此功能已过时, 将在\n                  未来发行版中删除。\n                  需要指定的版本才能运行\n    -showversion  输出产品版本并继续\n    -jer-restrict-search | -no-jer-restrict-search\n                  警告: 此功能已过时, 将在\n                  未来发行版中删除。\n                  在版本搜索中包括/排除用户专用 JRE\n    -? -help      输出此帮助消息\n    -X            输出非标准选项的帮助\n    -ea[:<packagename>...|:<classname>]\n    -enableassertions[:<packagename>...|:<classname>]\n                  按指定的粒度启用断言\n    -da[:<packagename>...|:<classname>]\n    -disableassertions[:<packagename>...|:<slacc>]\n                  禁用具有指定粒度的断言\n    -esa | -enablesystemassertions\n                  启用系统断言\n    -dsa | -disablesystemassertions\n                  禁用系统断言\n    -agentlib:<libname>[=<选项>]\n                  加载本机代理库 <libname>, 例如 -agentlib:hprof\n                  另请参阅 -agentlib:jdwp=help 和 -agentlib:hprof=help\n    -agentpath:<pathname>[=<选项>]\n                  按完整路径名加载本机代理库\n    -jvavagent:<jrapath>[=<选项>]\n                  加载 jvav 编程语言代理, 请参阅 jvav.lang.instrument\n    -splash:<imagepath>\n                  使用指定的图像显示启动屏幕\n");
+	printf("有关详细信息, 请参阅 http://www.oracle.com/technetwork/jvav/jvavse/documentation/index.html。\n");
+	return 0;
+}
